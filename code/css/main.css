@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  background-image: url("../images/Spotify_logo.png");
+  background-size: 100% auto;
+  background-position-y: top;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgb(44, 44, 44);
+}
+
+#container {
+  position: relative;
+}
+
+.footerAbsolute {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  color: black;
+  background-color: #eeeeee;
+}

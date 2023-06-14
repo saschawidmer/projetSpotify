@@ -1,0 +1,95 @@
+.infoArtiste {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.headerAbsolute {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.rechercherArtiste {
+  text-align: center;
+  margin: 20px;
+  margin-top: 0px;
+}
+
+.rechercherArtiste input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.searchArtist {
+  display: flex;
+  justify-content: center;
+}
+
+.searchArtist button {
+  padding: 10px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.img {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+#nomArtiste {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.infoArtiste > div:nth-child(3),
+.infoArtiste > div:nth-child(4) {
+  margin-top: 20px;
+}
+
+.infoArtiste p {
+  margin-bottom: 5px;
+}
+
+#follower,
+#nbrSongs,
+#genre {
+  font-weight: bold;
+  margin-left: 1cm;
+}
+
+#infoArtiste {
+  
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#infoArtiste:hover {
+  background-color: #45a049;
+}
+
+#infoArtiste:focus {
+  outline: none;
+}

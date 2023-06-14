@@ -1,0 +1,62 @@
+.accueil {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .welcome {
+    text-align: center;
+    color: #333;
+  }
+  
+  fieldset {
+    margin-top: 20px;
+    border: none;
+  }
+  
+  legend {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .field {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  
+  .but-valider {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .but-valider:hover {
+    background-color: #45a049;
+  }
+  
+  .but-valider:focus {
+    outline: none;
+  }
+  
