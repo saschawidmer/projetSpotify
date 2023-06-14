@@ -17,7 +17,6 @@ class IndexCtrl {
   constructor() {
     this.vue = new VueService();
     this.loadLogin();
-
   }
 
   afficherErreurHttp(msg) {
@@ -33,8 +32,8 @@ class IndexCtrl {
     this.vue.chargerVue("infoArtiste", () =>  new InfoArtisteCtrl());
   }
 
-  loadRecommendation() {
-    this.vue.chargerVue("songRecommendation", () =>  new RecommendationCtrl());
+  loadCompte() {
+    this.vue.chargerVue("infoPerso", () =>  new InfoPersoCtrl());
   }
 
   loadCompte() {

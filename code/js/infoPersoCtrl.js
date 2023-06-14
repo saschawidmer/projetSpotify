@@ -7,40 +7,43 @@
 
 class InfoPersoCtrl {
   constructor() {
-    $("#infoArtiste").click(() => {
-      indexCtrl.loadinfoArtiste();
+    // Ajouter un écouteur par bouton. On est obligé de le faire là car l'objet n'est pas connu dans le html si on le fait directement dans l'html
+    $("#compte-valider").click(() => {
+      this.validerCompte();
     });
-    $("#chargerInfo").click(() => {
-      this.chargerTop5Tracks();
+    $("#compte-retour").click(() => {
+      this.retourLogin();
+    });
+
+  }
+
+  validerCompte() {
+    // récupère les 5 valeurs de l'interface graphique via JQuery
+    let identifiant = {
+      username: $("#username").val(),
+      password: $("#password").val(),
+      domaine: $("#domaine").val(),
+      mail: $("#mail").val(),
+      langue: $("input[type='radio'][name='langues']:checked").val(),
+    };
+
+    //service.login(identifiant, this.OKCompte);
+    http.login(identifiant, (data) => {
+      this.OKCompte(data);
     });
   }
 
-  chargerTop5Tracks() {
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/top/tracks",
-      type: "GET",
-      headers: {
-        Authorization: "Bearer " + "BQCTb-1_iHyOT4lrDvMgA6DTId9C1wX5blwT0qB_LMTBvcD3xQgEhL-IqD-PtIR8dfFIk8R2iupWjzu8jCT-s-Wc1vZ4wpnh6a0OZjFd-Qnxd5TQSWA",
-      },
-   /*   data: {
-        time_range: "short_term", // Les 30 derniers jours
-        limit: 5, // Limite de 5 chansons
-      },*/
-      success: function (response) {
-        // Traitement des données de réponse
-        console.log(response);
-        var topSongs = response.items;
-        console.log(topSongs);
-        // Affichage des 5 premières chansons
-        for (var i = 0; i < topSongs.length; i++) {
-          var song = topSongs[i];
-          console.log(i + 1 + ". " + song.name + " - " + song.artists[0].name);
-        }
-      },
-      error: function (error) {
-        // Gérer la réponse d'erreur ici
-        console.log(error);
-      },
-    });
+
+  OKCompte(data) {
+    if (data.includes("KO")) {
+      alert("Vos identifications sont incorrectes !!!\nVeuillez réessayer...");
+    } else {
+      alert(`Enregistrement OK:  ${data}`);
+      indexCtrl.loadLogin();
+    }
+  }
+
+  retourLogin() {
+    indexCtrl.loadLogin();
   }
 }
