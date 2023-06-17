@@ -3,9 +3,20 @@
 <!-- panneau pour créer un nouveau compte -->
 <div class="recommendation">
   <div class="rechercherSon">
-    <input type="text" size="30" id="sonRecherche" placeholder="pls enter the name of a track" autofocus/>
-    <input type="text" size="30" id="artisteRecherche" placeholder="pls enter the name of a artist"/>
-    <input type="text" size="30" id="genreRecherche" placeholder="pls enter the name of a genre"/>
+    <input type="text" size="30" id="sonRecherche" placeholder="enter the name of a track" autofocus/>
+    <input type="text" size="30" id="artisteRecherche" placeholder="enter the name of a artist"/>
+    <!-- <input type="text" size="30"  placeholder="enter the name of a genre"/>-->
+    <select id="genreRecherche">
+      <option id="genre1">Pop</option>
+      <option id="genre2">Rock</option>
+      <option id="genre3">Hip-Hop</option>
+      <option id="genre4">Rap</option>
+      <option id="genre5">R&B</option>
+      <option id="genre6">Jazz</option>
+      <option id="genre7">Classical</option>
+      <option id="genre8">Alternative</option>
+      <option id="genre9">Reggae</option>
+    </select>    
   </div>
   <div class="searchSong">
     <button id="searchSong">search</button>
@@ -20,6 +31,7 @@
     <p id="track5"></p>
   </div>
   <div>
-    <input id="infoArtists" type="button" value="Go to artist informations" />
+    <button id="infoArtists" onclick="indexCtrl.loadinfoArtiste()">Go to artist informations</button>
+   <!-- <input id="infoArtists" type="button" value="Go to artist informations" />
   </div>
 </div>

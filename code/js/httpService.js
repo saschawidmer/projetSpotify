@@ -6,11 +6,11 @@
 */
 
 class HttpService {
-  constructor() {}
+  constructor() { }
 
   /*
-  **  $.ajaxSetup permet de définir une fois un élément sans le refaire par la suite. Ici cela se fait l'error
-  */
+   **  $.ajaxSetup permet de définir une fois un élément sans le refaire par la suite. Ici cela se fait l'error
+   */
   centraliserErreurHttp(httpErrorCallbackFn) {
     $.ajaxSetup({
       error: function (xhr, exception) {
@@ -35,21 +35,190 @@ class HttpService {
     });
   }
 
-  /*
-  */
-  login(identifiant, successCallback) {
-	// Uploade votre propre fichier PHP et adaptez l'URL ci-dessous.
-    let url = "https://widmers.emf-informatique.ch/307/Exercices/Exercice_20/php/login20.php";
-    let param = "username=" + identifiant.username + 
-      "&password="+identifiant.password + "&domaine=" + identifiant.domaine + 
-      "&mail="+identifiant.mail+ "&langue="+ identifiant.langue;
+  login(successCallBack) {
+    let clientID = document.getElementById("clientID").value;
+    let clientSecret = document.getElementById("clientSecret").value;
 
-    // envoi de la requête
-    $.ajax(url, {
+    $.ajax({
+      url: "https://accounts.spotify.com/api/token",
       type: "POST",
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      data: param,
-      success: successCallback
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: {
+        grant_type: "client_credentials",
+        client_id: clientID,
+        client_secret: clientSecret,
+      },
+
+      success: successCallBack,
+
+      error: function (error) {
+        // Handle the error response here
+        console.log(error);
+      },
+    });
+  }
+
+  getURI(successCallBack) {
+    $.ajax({
+      url: `https://api.spotify.com/v1/search?type=artist`,
+      type: "GET",
+      data: {
+        q: document.getElementById("artisteRecherche").value,
+        type: "artist",
+      },
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+
+      // Gérer ici la réponse en cas de succès
+      success: successCallBack,
+
+      // Gérer ici la réponse en cas d'erreur
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  }
+
+  getImgArtiste(artist, successCallBack) {
+    $.ajax({
+      url: "https://api.spotify.com/v1/artists/" + artist,
+      type: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+
+      // Gérer ici la réponse en cas de succès
+      success: successCallBack,
+
+      // Gérer ici la réponse en cas d'erreur
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  }
+
+  getNomArtiste(artist, successCallBack) {
+    $.ajax({
+      url: "https://api.spotify.com/v1/artists/" + artist,
+      type: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+
+      // Gérer ici la réponse en cas de succès
+      success: successCallBack,
+
+      // Gérer ici la réponse en cas d'erreur
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  }
+
+  getFollowerArtiste(artist, successCallBack) {
+    $.ajax({
+      url: "https://api.spotify.com/v1/artists/" + artist,
+      type: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+
+      // Gérer ici la réponse en cas de succès
+      success: successCallBack,
+
+      // Gérer ici la réponse en cas d'erreur
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  }
+
+  getTracksArtiste(artist, successCallBack) {
+    $.ajax({
+      url: "https://api.spotify.com/v1/artists/" + artist + "/albums",
+      type: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+      data: {
+        include_groups: "album,single",
+      },
+
+      // Gérer ici la réponse en cas de succès
+      success: successCallBack,
+
+      // Gérer ici la réponse en cas d'erreur
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  }
+
+  getGenresArtiste(artist, successCallBack) {
+    $.ajax({
+      url: "https://api.spotify.com/v1/artists/" + artist,
+      type: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+
+      // Gérer ici la réponse en cas de succès
+      success: successCallBack,
+
+      // Gérer ici la réponse en cas d'erreur
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  }
+
+  getRecommendation(seed_artists, seed_genres, seed_tracks, successCallBack) {
+    $.ajax({
+      url: "https://api.spotify.com/v1/recommendations",
+      type: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+      data: {
+        limit: 5,
+        market: "CH",
+        seed_artists: seed_artists,
+        seed_genres: seed_genres,
+        seed_tracks: seed_tracks,
+      },
+
+      // Gérer ici la réponse en cas de succès
+      success: successCallBack,
+
+      // Gérer ici la réponse en cas d'erreur
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  }
+
+  getTrackID(trackName, successCallBack) {
+    $.ajax({
+      url: "https://api.spotify.com/v1/search",
+      headers: {
+        "Authorization": "Bearer " + token
+      },
+      data: {
+        q: trackName,
+        type: "track",
+        limit: 1
+      },
+
+      // Gérer ici la réponse en cas de succès
+      success: successCallBack,
+
+      // Gérer ici la réponse en cas d'erreur
+      error: function (error) {
+        console.log("Erreur lors de la requête :", error);
+      }
     });
   }
 }
